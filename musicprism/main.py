@@ -1,9 +1,7 @@
 from telegram.ext import Updater, CommandHandler, InlineQueryHandler
-from musicprism.config import *
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from musicprism.distributor import *
 import logging
-import time
 
 updater = Updater(token=config.get('token'), request_kwargs={
     'proxy_url': config.get('proxy'),
