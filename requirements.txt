@@ -1,0 +1,5 @@
+fake-useragent
+python-telegram-bot
+requests
+BeautifulSoup4
+pytest
