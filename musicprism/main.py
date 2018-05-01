@@ -14,34 +14,6 @@ d = Distributor()
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
-def callback(bot, update):
-    query = update.inline_query.query
-    if not query:
-        return
-
-    answers = list()
-    title, lookup_results = d.get_results(query)
-
-    itemtype, artist, item = d.parse_url(query)
-    desc = '{0}: {1} - {2}'.format(itemtype, artist, item) if item else '{0}: {1}'.format(itemtype, artist)
-    share_all_content = ''
-
-    for h in d.handlers:
-        if h.source in query:
-            share_all_content += query + r'\n'
-
-    share_all_content += str('\n'.join(lookup_results)).encode('utf-8')
-
-    answers.append(
-        InlineQueryResultArticle(
-            id=time.time(),
-            title='Share all sources',
-            input_message_content=InputTextMessageContent(share_all_content),
-            disable_web_page_preview=True,
-            description=desc))
-    bot.answer_inline_query(update.inline_query.id, answers)
-
-
 def light_callback(bot, update):
     query = update.inline_query.query
     if not query:
