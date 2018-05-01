@@ -2,6 +2,7 @@ from handlers.handler_itunes import *
 from handlers.handler_yandexmusic import *
 from handlers.handler_spotify import *
 
+
 class Distributor:
     def __init__(self):
         self.handlers = []
@@ -25,8 +26,11 @@ class Distributor:
         results = list()
 
         for h in self.handlers:
-            link = h.get_link(itemtype, artist, item)
-            results.append((h.source,
-                            link if link else 'can\'t find enything :C'))
+            if h.source in url:
+                results.append((h.source, url))
+            else:
+                link = h.get_link(itemtype, artist, item)
+                results.append((h.source,
+                                link if link else 'can\'t find enything :C'))
 
         return title, results
