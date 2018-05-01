@@ -25,9 +25,8 @@ class Distributor:
         results = list()
 
         for h in self.handlers:
-            if h.source not in url:
-                link = h.get_link(itemtype, artist, item)
-                results.append((h.source,
-                                link if link else 'can\'t find enything :C'))
+            link = h.get_link(itemtype, artist, item)
+            results.append((h.source,
+                            link if link else 'can\'t find enything :C'))
 
         return title, results

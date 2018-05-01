@@ -20,7 +20,7 @@ def light_callback(bot, update):
 
     title, results = d.get_results(query)
     answers = list()
-    all_results = '\n'.join(map(lambda result: result[1], results))
+    all_results = title + '\n' + '\n'.join(map(lambda result: result[1], results))
 
     answers.append(
         InlineQueryResultArticle(
