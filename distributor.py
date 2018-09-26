@@ -31,6 +31,9 @@ class Distributor:
             else:
                 link = h.get_link(itemtype, artist, item)
                 results.append((h.source,
-                                link if link else 'can\'t find enything :C'))
+                                link if link else 'can\'t find anything :('))
 
         return title, results
+
+d = Distributor()
+print(d.get_results('https://itunes.apple.com/ru/album/this-is-all-yours/886683838'))

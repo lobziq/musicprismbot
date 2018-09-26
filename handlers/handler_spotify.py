@@ -28,7 +28,7 @@ class HandlerSpotify(Handler):
 
     def get_link(self, itemtype, artist, item):
         try:
-            q = artist + ' + ' + item if item else artist
+            q = artist.replace('+', '_') + ' ' + item.replace('+', '_') if item else artist
             data = self.spotify.search(q, type=itemtype)
             return data[itemtype + 's']['items'][0]['external_urls']['spotify']
         except:
