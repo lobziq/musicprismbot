@@ -27,7 +27,7 @@ class HandlerItunes(Handler):
                 else:
                     return None
 
-            return itemtype, parse.unquote(artist), parse.unquote(item)
+            return itemtype, parse.unquote(artist), parse.unquote(item) if item else item
         except:
             return None
 
